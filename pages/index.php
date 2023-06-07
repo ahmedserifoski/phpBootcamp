@@ -1,7 +1,7 @@
 <?php
 
 require "../database.php";
-require '../header.php';
+require '../elements/header.php';
 
  ?>
 
@@ -12,14 +12,20 @@ require '../header.php';
     <section>
   <h2>Current QB's</h2>
   <ul>
-    <?php $res = $pdo->query("SELECT * FROM `posts`"); ?>
+    <?php $res = fetchPosts(); ?>
 
       <?php foreach($res as $row): ?>
-        <strong><li> <?php echo $row['title'] ?> </li></strong>
-        <li> <?php echo $row['content'] ?> </li><hr>  <!-- Alternatively, you can use curly braces for variable interpolation -->
+        <strong>
+          <li>
+            <a href="post.php?title=<?php echo $row["title"] ?>">
+              <?php echo $row['title'] ?>
+            </a>
+           </li>
+        </strong>
+
       <?php endforeach; ?>
   </ul>
 </section>
   </main>
 
-<?php  require "../footer.php"; ?>
+<?php  require "../elements/footer.php"; ?>
