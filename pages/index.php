@@ -1,13 +1,9 @@
+<?php  //requiring the autoload and database file through init.php
+  require "../init.php";
+  //getting the header, instead of having it in all files
+  require '../elements/header.php';
 
-
-<?php  //requiring the autoload and database file from separate place ?>
-<?php   //require "../autoload.php"; ?>
-<?php   //require "../database.php"; ?>
-<?php   require "../init.php"; ?>
-<?php  //getting the header, instead of having it in all files
-require '../elements/header.php';
-
-?>
+  ?>
   <main>
     <section>
       <h2>Current QB's</h2>
@@ -15,7 +11,7 @@ require '../elements/header.php';
         <!-- using fetchPosts() function from PostRepository class, I make a new
         instance of the PostsRepository class and get all the functions from it -->
         <?php
-        $postsRepository = new App\Post\PostsRepository();
+        $postsRepository = new App\Post\PostsRepository($pdo);
         $res = $postsRepository->fetchPosts();
 
         ?>
@@ -25,9 +21,9 @@ require '../elements/header.php';
             <strong>
               <li>
                 <!-- making the titles of the data that we get an actual link -->
-                <a href="post.php?id=<?php echo $row["id"] ?>">
+                <a href="post.php?id=<?php echo $row->id ?>">
                   <!-- displaying the data -->
-                  <?php echo $row['title'] ?>
+                  <?php echo $row->title ?>
                 </a>
                </li>
             </strong>

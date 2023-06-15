@@ -10,21 +10,25 @@ include "../init.php";
 //so it can only live inside that file
 require "../elements/header.php";
 
+
 ?>
   <main>
     <section>
       <h2>Detailed QB Page</h2>
       <?php
-          //here we are using the function fetchPost() defined in the database file
-          $postsRepository = new App\Post\PostsRepository();
+          //creating an instance of PostsRepository class and passing the $pdo
+          //databasa connection to it
+          $postsRepository = new App\Post\PostsRepository($pdo);
           $id = $_GET["id"];
+          //here we are using the function fetchPost() defined in the
+          //PostsRepository file
           $post = $postsRepository->fetchPost($id);
           //using data from $post variable
-          echo $post["title"];
+          echo $post->title;
           echo "<hr>";
           // new line to brake line function makes sure we have the needed umbruche
           // between parameters
-          echo nl2br($post["content"]);
+          echo nl2br($post->content);
       ?>
     </section>
   </main>

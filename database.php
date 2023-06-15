@@ -1,6 +1,6 @@
 <?php
 
-//this is your connection to the databank, it's called PDO and it's an interface
+//this is your connection to the databank, it's called PDO and it's an object
 //to access databases
 $pdo = new PDO(
   "mysql:host=localhost;dbname=blog;charset=utf8",
