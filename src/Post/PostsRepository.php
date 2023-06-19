@@ -8,11 +8,12 @@ namespace App\Post;
 
 //use the PDO object that isn't in any namespace
 use PDO;
+use ArrayAccess;
 /**
  * a class that deliveres data from databases are usually called Repositories
 * and this is such a class
  */
-class PostsRepository
+class PostsRepository implements ArrayAccess
 {
 
   private $pdo;
@@ -25,11 +26,39 @@ class PostsRepository
     $this->pdo = $pdo;
   }
 
-  //******************* ArrayAccess implementation
+  //******************************* ArrayAccess implementation
+  //******************************
+
+  private $title;
 
 
+  public function offsetExists($offset){
+    if($offset == "RB") {
+      return true;
+    }
+    // var_dump("offsetExists:", $offset);
+  }
 
-  //*******************
+  public function offsetGet($offset){
+    if($offset == "RB") {
+      return $this->runningBack;
+    }
+    // var_dump("offsetExists:", $offset);
+  }
+
+  public function offsetSet(mixed $offset, mixed $value): void
+  {
+    if ($offset == "data") {
+      $this->title = $value;
+    }
+  }
+
+
+  public function offsetUnset($offset){
+
+  }
+  //******************************
+  //******************************
 
   //functions defined in classes are suposed to have CamelCase
   //fetching all posts from databank and table posts
@@ -50,8 +79,8 @@ class PostsRepository
       $post = $smtp->fetch(PDO::FETCH_CLASS);
 
       //creating a new PostModel and asigning the values of the defined variables
-      //in PostModel the values from the array so we can work with objects
-      //instead of arrays
+      //in PostModel to the values of the array(from the database) so we can work
+      // with objects instead of arrays
       //***There is a function for that and we are doing that with the function
       //above, instead of writting this code.***
           // $post = new PostModel();

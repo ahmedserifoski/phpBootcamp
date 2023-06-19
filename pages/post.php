@@ -26,6 +26,11 @@ require "../elements/header.php";
           //using data from $post variable
           echo $post->title;
           echo "<hr>";
+          $postsRepository["title"] = "Patrick Mahomes";
+          echo "<hr>";
+          var_dump($postsRepository["title"]);
+          echo "<hr>";
+
           // new line to brake line function makes sure we have the needed umbruche
           // between parameters
           echo nl2br($post->content);
