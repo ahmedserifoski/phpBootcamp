@@ -3,6 +3,8 @@
   //getting the header, instead of having it in all files
   require '../elements/header.php';
 
+
+
   ?>
   <main>
     <section>
@@ -11,7 +13,13 @@
         <!-- using fetchPosts() function from PostRepository class, I make a new
         instance of the PostsRepository class and get all the functions from it -->
         <?php
-        $postsRepository = new App\Post\PostsRepository($pdo);
+        $postsRepository = $container->getPostsRepository();
+
+        $postsRepository2 = $container->getPostsRepository();
+
+        var_dump($postsRepository);
+        echo "<br>";
+        var_dump($postsRepository2);
         $res = $postsRepository->fetchPosts();
 
         ?>

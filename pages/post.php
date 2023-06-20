@@ -18,22 +18,20 @@ require "../elements/header.php";
       <?php
           //creating an instance of PostsRepository class and passing the $pdo
           //databasa connection to it
-          $postsRepository = new App\Post\PostsRepository($pdo);
+          $postsRepository = $container->getPostsRepository();
           $id = $_GET["id"];
           //here we are using the function fetchPost() defined in the
           //PostsRepository file
           $post = $postsRepository->fetchPost($id);
           //using data from $post variable
-          echo $post->title;
+          echo $post["title"];
           echo "<hr>";
-          $postsRepository["title"] = "Patrick Mahomes";
-          echo "<hr>";
-          var_dump($postsRepository["title"]);
+          echo nl2br($post["content"]);
+
           echo "<hr>";
 
           // new line to brake line function makes sure we have the needed umbruche
           // between parameters
-          echo nl2br($post->content);
       ?>
     </section>
   </main>

@@ -13,8 +13,9 @@ use ArrayAccess;
  * a class that deliveres data from databases are usually called Repositories
 * and this is such a class
  */
-class PostsRepository implements ArrayAccess
+class PostsRepository
 {
+
 
   private $pdo;
 
@@ -25,40 +26,6 @@ class PostsRepository implements ArrayAccess
   public function __construct(PDO $pdo) {
     $this->pdo = $pdo;
   }
-
-  //******************************* ArrayAccess implementation
-  //******************************
-
-  private $title;
-
-
-  public function offsetExists($offset){
-    if($offset == "RB") {
-      return true;
-    }
-    // var_dump("offsetExists:", $offset);
-  }
-
-  public function offsetGet($offset){
-    if($offset == "RB") {
-      return $this->runningBack;
-    }
-    // var_dump("offsetExists:", $offset);
-  }
-
-  public function offsetSet(mixed $offset, mixed $value): void
-  {
-    if ($offset == "data") {
-      $this->title = $value;
-    }
-  }
-
-
-  public function offsetUnset($offset){
-
-  }
-  //******************************
-  //******************************
 
   //functions defined in classes are suposed to have CamelCase
   //fetching all posts from databank and table posts
@@ -89,7 +56,6 @@ class PostsRepository implements ArrayAccess
           // $post->content = $postArray["content"];
 
       return $post;
-
   }
 }
  ?>
