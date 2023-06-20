@@ -15,11 +15,7 @@
         <?php
         $postsRepository = $container->getPostsRepository();
 
-        $postsRepository2 = $container->getPostsRepository();
-
         var_dump($postsRepository);
-        echo "<br>";
-        var_dump($postsRepository2);
         $res = $postsRepository->fetchPosts();
 
         ?>
