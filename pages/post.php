@@ -18,7 +18,7 @@ require "../elements/header.php";
       <?php
           //creating an instance of PostsRepository class and passing the $pdo
           //databasa connection to it
-          $postsRepository = $container->getPostsRepository();
+          $postsRepository = $container->make("postsRepository");
           $id = $_GET["id"];
           //here we are using the function fetchPost() defined in the
           //PostsRepository file

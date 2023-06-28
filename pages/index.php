@@ -13,9 +13,8 @@
         <!-- using fetchPosts() function from PostRepository class, I make a new
         instance of the PostsRepository class and get all the functions from it -->
         <?php
-        $postsRepository = $container->getPostsRepository();
+        $postsRepository = $container->make("postsRepository");
 
-        var_dump($postsRepository);
         $res = $postsRepository->fetchPosts();
 
         ?>
