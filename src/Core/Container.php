@@ -14,12 +14,14 @@ class Container{
   public $recipes = [];
   public $instances = [];
 
+  //php doesn't let us store functions in arrays like this directly in the
+  //recipes array, so we are doing it through the __construct() function
   public function __construct(){
     $this->recipes = [
       "postsRepository" => function() {
         return new PostsRepository($this->make("pdo"));
       },
-      "pdo" => function() {
+      "pdo" => function(){
         $pdo = new PDO(
           "mysql:host=localhost;dbname=blog;charset=utf8",
           "AhmedBlog",
@@ -29,18 +31,20 @@ class Container{
         return $pdo;
       }
     ];
-}
+  }
 
-
-
-
-  public function make($name){
-    if(!empty($instances[$name])){
+//this function replaces the code below, the idea is to have a function that
+//works with all variables (like pdo and postsRepository) instead of writing
+//a separate function for all variables. It's more general
+  public function make($name) {
+    if(!empty($this->instances[$name])){
       return $this->instances[$name];
     }
-    $this->instances[$name] = $this->recipes[$name]();
 
-    return $this->instances[$name];
+    if(isset($this->recipes[$name])){
+      $this->instances[$name] = $this->recipes[$name]();
+      return $this->instances[$name];
+    }
   }
 
   /*
