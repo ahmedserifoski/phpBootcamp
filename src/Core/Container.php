@@ -18,6 +18,9 @@ class Container{
   //recipes array, so we are doing it through the __construct() function
   public function __construct(){
     $this->recipes = [
+      "postsController" => function () {
+        return new PostsController($this->make("postsRepository"))
+      },
       "postsRepository" => function() {
         return new PostsRepository($this->make("pdo"));
       },
