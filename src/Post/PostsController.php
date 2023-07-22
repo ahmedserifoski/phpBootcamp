@@ -12,8 +12,14 @@ class PostsController {
   //this function index() is representing the app logic that is needed for the
   //index page where we have all our posts
   public function index(){
-    $res = $this->postsRepository->fetchPosts();
-    echo "Posts Controller() -> index() würde ausgeführtt";
+    $posts = $this->postsRepository->fetchPosts();
+    require __DIR__ . "/../../views/posts/index.php";
+  }
+
+  public function post(){
+    $id = $_GET["id"];
+    $post = $this->postsRepository->fetchPost($id);
+    require __DIR__ . "/../../views/posts/post.php";
   }
 
 }

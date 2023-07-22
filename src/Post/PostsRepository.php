@@ -54,7 +54,6 @@ class PostsRepository
           // $post->id = $postArray["id"];
           // $post->title = $postArray["title"];
           // $post->content = $postArray["content"];
-
       return $post;
   }
 }
