@@ -9,8 +9,9 @@ use App\Post\PostsRepository;
 use App\Post\PostsController;
 
 use PDO;
+use PDOException;
 
-class Container{
+class Container {
   //watch blog 3, Contaier Abschnitt. Everything explained there
   public $recipes = [];
   public $instances = [];
@@ -22,19 +23,24 @@ class Container{
       "postsController" => function () {
         //we are telling here how to make a PostsController and in the PostsController
         //class we defined that it has to get a PostsRepository upon creation
-        //which we also pass to it with $this->make("postsRepository"), 
+        //which we also pass to it with $this->make("postsRepository"),
         return new PostsController($this->make("postsRepository"));
       },
       "postsRepository" => function() {
         return new PostsRepository($this->make("pdo"));
       },
       "pdo" => function(){
-        $pdo = new PDO(
-          "mysql:host=localhost;dbname=blog;charset=utf8",
-          "AhmedBlog",
-          "Q8qlh7a[M4gK3.Fm"
-        );
-        $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        try{
+          $pdo = new PDO(
+            "mysql:host=localhost;dbname=blog;charset=utf8",
+            "AhmedBlog",
+            "Q8qlh7a[M4gK3.Fm"
+          );
+          $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        } catch (PDOException $e) {
+          echo "Could not connect with database";
+          die();
+        }
         return $pdo;
       }
     ];

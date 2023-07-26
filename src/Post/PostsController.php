@@ -1,7 +1,8 @@
 <?php
 namespace App\Post;
+use App\Core\AbstractController;
 
-class PostsController {
+class PostsController extends AbstractController {
 
   //this PostsController is supposed to get the class PostsRepository when created
   //it's just a class like we can define all other classes to get  a class upon creation
@@ -13,13 +14,17 @@ class PostsController {
   //index page where we have all our posts
   public function index(){
     $posts = $this->postsRepository->fetchPosts();
-    require __DIR__ . "/../../views/posts/index.php";
+    $this->render("posts/index", [
+      "posts" => $posts
+    ]);
   }
 
   public function post(){
     $id = $_GET["id"];
     $post = $this->postsRepository->fetchPost($id);
-    require __DIR__ . "/../../views/posts/post.php";
+    $this->render("posts/post", [
+      "post" => $post
+    ]);
   }
 
 }
