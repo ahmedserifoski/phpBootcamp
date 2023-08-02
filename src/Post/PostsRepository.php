@@ -9,15 +9,16 @@ namespace App\Post;
 //use the PDO object that isn't in any namespace
 use PDO;
 use ArrayAccess;
+use App\Core\AbstractRepository;
 /**
  * a class that deliveres data from databases are usually called Repositories
 * and this is such a class
  */
-class PostsRepository
+class PostsRepository extends AbstractRepository
 {
 
 
-  private $pdo;
+  public $pdo;
 
   //when I create an instance of this class I need to pass a PDO variable to it
   //this is called Construcotr Injection, This is an object (PostsRepository)
@@ -29,32 +30,14 @@ class PostsRepository
 
   //functions defined in classes are suposed to have CamelCase
   //fetching all posts from databank and table posts
-  function fetchPosts(){
-    //Getting all the data from the table posts and altering it from array to
-    //object the same as we are doing down for the fetchPost() function.
-    $smtp = $this->pdo->query("SELECT * FROM `posts`");
-    $posts = $smtp->fetchAll(PDO::FETCH_CLASS, "App\\Post\\PostModel");
-    return $posts;
+  function fetchPosts () {
+    return $this->fetchAll("posts", "App\\Post\\PostModel");
   }
 
   //fetch individual post from table posts, there is also some prepare statements
   //against SQL injection
   function fetchPost($id) {
-      $smtp = $this->pdo->prepare("SELECT * FROM `posts` WHERE id = :id");
-      $smtp->execute(['id' => $id]);
-      $smtp->setFetchMode(PDO::FETCH_CLASS, "App\\Post\\PostModel");
-      $post = $smtp->fetch(PDO::FETCH_CLASS);
-
-      //creating a new PostModel and asigning the values of the defined variables
-      //in PostModel to the values of the array(from the database) so we can work
-      // with objects instead of arrays
-      //***There is a function for that and we are doing that with the function
-      //above, instead of writting this code.***
-          // $post = new PostModel();
-          // $post->id = $postArray["id"];
-          // $post->title = $postArray["title"];
-          // $post->content = $postArray["content"];
-      return $post;
+    return $this->fetchSpecificPost("posts", $id, "App\\Post\\PostModel");
   }
 }
  ?>
