@@ -1,23 +1,42 @@
 <?php
+//in this AbstractRepository we defined all the function we need for the code to
+//work, then in the PostsRepository we just define the data that the
+//AbstractRepository needs (getTableName() and getModelName), and we just use
+//them because the PostsRepository extends the AbstractRepository
 namespace App\Core;
 
 use PDO;
 use ArrayAccess;
 abstract class AbstractRepository {
 
+  private $pdo;
 
+  //when I create an instance of this class I need to pass a PDO variable to it
+  //this is called Construcotr Injection, This is an object (PostsRepository)
+  //that needs a class (PDO, database connection in this case) injected into it
+  //for it to run, otherwise it errors
+  public function __construct(PDO $pdo) {
+    $this->pdo = $pdo;
+  }
 
-  function fetchAll($table, $model) {
+  abstract function getTableName();
 
+  abstract function getModelName();
+
+  function fetchAll() {
     //Getting all the data from the table posts and altering it from array to
     //object the same as we are doing down for the fetchPost() function.
+    $table = $this->getTableName();
+    $model = $this->getModelName();
     $smtp = $this->pdo->query("SELECT * FROM `{$table}`");
     $posts = $smtp->fetchAll(PDO::FETCH_CLASS, "{$model}");
     return $posts;
 
   }
 
-  function fetchSpecificPost($table, $id, $model){
+  function fetchSpecificPost($id){
+    $table = $this->getTableName();
+    $model = $this->getModelName();
     $smtp = $this->pdo->prepare("SELECT * FROM `{$table}` WHERE id = :id");
     $smtp->execute(['id' => $id]);
     $smtp->setFetchMode(PDO::FETCH_CLASS, "{$model}");
