@@ -6,6 +6,7 @@
 namespace App\Core;
 
 use App\Post\PostsRepository;
+use App\Comment\CommentsRepository;
 use App\Post\PostsController;
 
 use PDO;
@@ -20,6 +21,9 @@ class Container {
   //recipes array, so we are doing it through the __construct() function
   public function __construct(){
     $this->recipes = [
+      "commentsRepository" => function() {
+        return new CommentsRepository($this->make("pdo"));
+      },
       "postsController" => function () {
         //we are telling here how to make a PostsController and in the PostsController
         //class we defined that it has to get a PostsRepository upon creation

@@ -5,8 +5,10 @@
 //them because the PostsRepository extends the AbstractRepository
 namespace App\Core;
 
+//use the PDO and ArrayAccess object that isn't in any namespace
 use PDO;
 use ArrayAccess;
+
 abstract class AbstractRepository {
 
   private $pdo;
@@ -23,6 +25,7 @@ abstract class AbstractRepository {
 
   abstract function getModelName();
 
+  //fetching all posts from databank and table posts
   function fetchAll() {
     //Getting all the data from the table posts and altering it from array to
     //object the same as we are doing down for the fetchPost() function.
@@ -34,6 +37,8 @@ abstract class AbstractRepository {
 
   }
 
+    //fetch individual post from table posts, there is also some prepare statements
+    //against SQL injection
   function fetchSpecificPost($id){
     $table = $this->getTableName();
     $model = $this->getModelName();
