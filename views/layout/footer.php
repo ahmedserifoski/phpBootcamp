@@ -1,4 +1,4 @@
-  <footer>
+  <footer class="mt-auto text-center">
     <p>&copy; 2023 My Web Page. All rights reserved.</p>
   </footer>
 

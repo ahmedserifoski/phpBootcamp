@@ -7,10 +7,10 @@ require __DIR__ . "/../layout/header.php";
 // echo "<hr>";
 ?>
 
-<div class="jumbotron">
-  <h1 class="display-4"><?php echo $post["title"]; ?> </h1>
+<div class="card text-white bg-dark mb-3 border-0">
+  <h1 class="card-header border-0 display-4"><?php echo $post["title"]; ?> </h1>
   <hr class="my-4">
-  <p><?php echo nl2br($post["content"]); ?></p>
+  <p class="card-body"><?php echo nl2br($post["content"]); ?></p>
 </div>
 
 <?php

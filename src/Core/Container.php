@@ -28,7 +28,10 @@ class Container {
         //we are telling here how to make a PostsController and in the PostsController
         //class we defined that it has to get a PostsRepository upon creation
         //which we also pass to it with $this->make("postsRepository"),
-        return new PostsController($this->make("postsRepository"));
+        return new PostsController(
+          $this->make("postsRepository"),
+          $this->make("commentsRepository")
+        );
       },
       "postsRepository" => function() {
         return new PostsRepository($this->make("pdo"));

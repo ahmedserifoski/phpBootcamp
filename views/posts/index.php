@@ -3,20 +3,22 @@
 
 <main>
   <section>
-    <h2>Current QB's</h2>
-    <ul>
-        <?php foreach($posts as $post):?>
-          <strong>
-            <li>
-              <!-- why href="post?id... ?? -> lesson 94 of PHP Bootcamp, Routing
-                  einbauen und warum -->
-              <a href="post?id=<?php echo $post->id ?>">
-                <?php echo $post->title; ?>
-              </a>
-            </li>
-          </strong>
-        <?php endforeach; ?>
-    </ul>
+    <div class="card text-white bg-dark mb-3 border-0">
+        <h2 class="card-header border-0 display-4">Current QB's</h2>
+        <ul class="list group">
+          <?php foreach($posts as $post):?>
+            <strong class="card text-white bg-dark mb-3 border-0">
+              <li class="list-group-item" >
+                <!-- why href="post?id... ?? -> lesson 94 of PHP Bootcamp, Routing
+                einbauen und warum -->
+                <a class="h4 link-light text-decoration-none" href="post?id=<?php echo $post->id ?>">
+                  <?php echo $post->title; ?>
+                </a>
+              </li>
+            </strong>
+          <?php endforeach; ?>
+        </ul>
+    </div>
   </section>
 </main>
 <!--
