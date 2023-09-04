@@ -21,9 +21,6 @@ class Container {
   //recipes array, so we are doing it through the __construct() function
   public function __construct(){
     $this->recipes = [
-      "commentsRepository" => function() {
-        return new CommentsRepository($this->make("pdo"));
-      },
       "postsController" => function () {
         //we are telling here how to make a PostsController and in the PostsController
         //class we defined that it has to get a PostsRepository upon creation
@@ -35,6 +32,9 @@ class Container {
       },
       "postsRepository" => function() {
         return new PostsRepository($this->make("pdo"));
+      },
+      "commentsRepository" => function() {
+        return new CommentsRepository($this->make("pdo"));
       },
       "pdo" => function(){
         try{

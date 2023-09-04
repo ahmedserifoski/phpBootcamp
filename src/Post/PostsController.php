@@ -2,14 +2,15 @@
 namespace App\Post;
 use App\Core\AbstractController;
 use App\Comment\CommentsRepository;
+use App\Comment\CommentModel;
 
 class PostsController extends AbstractController {
 
   //this PostsController is supposed to get the class PostsRepository when created
   //it's just a class like we can define all other classes to get  a class upon creation
   public function __construct(
-    PostsRepository $postsRepository,
-    CommentsRepository $commentsRepository
+      PostsRepository $postsRepository,
+      CommentsRepository $commentsRepository
   ) {
     $this->postsRepository = $postsRepository;
     $this->commentsRepository = $commentsRepository;

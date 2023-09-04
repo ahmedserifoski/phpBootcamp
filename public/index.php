@@ -17,6 +17,7 @@ $routes = [
 
 if($routes[$pathInfo]) {
   $route = $routes[$pathInfo];
+
   $controllerName = $route["controller"];
   $methodName = $route["method"];
 
