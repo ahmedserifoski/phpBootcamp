@@ -18,7 +18,7 @@ require __DIR__ . "/../layout/header.php";
   <ul class="list group">
     <?php foreach ($comments as $comment):?>
       <li class="card-body" >
-          <?php echo$comment->content; ?>
+          <?php echo $comment->content ?>
       </li>
     <?php endforeach; ?>
   </ul>

@@ -11,7 +11,7 @@ use ArrayAccess;
 
 abstract class AbstractRepository {
 
-  private $pdo;
+  protected $pdo;
 
   //when I create an instance of this class I need to pass a PDO variable to it
   //this is called Construcotr Injection, This is an object (PostsRepository)
@@ -58,6 +58,9 @@ abstract class AbstractRepository {
         // $post->content = $postArray["content"];
     return $post;
   }
+
+  
+
 }
 
  ?>

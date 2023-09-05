@@ -1,5 +1,5 @@
 <?php
-namespace App\Comment;
+namespace App\Post;
 use App\Core\AbstractModel;
 
 class CommentModel extends AbstractModel {

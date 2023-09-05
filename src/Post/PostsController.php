@@ -1,8 +1,6 @@
 <?php
 namespace App\Post;
 use App\Core\AbstractController;
-use App\Comment\CommentsRepository;
-use App\Comment\CommentModel;
 
 class PostsController extends AbstractController {
 
@@ -29,7 +27,7 @@ class PostsController extends AbstractController {
   public function post(){
     $id = $_GET["id"];
     $post = $this->postsRepository->fetchSpecificPost($id);
-    $comments = $this->commentsRepository->fetchAll();
+    $comments = $this->commentsRepository->fetchAllById($id);
     $this->render("posts/post", [
       "post" => $post,
       "comments" => $comments

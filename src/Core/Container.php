@@ -6,7 +6,7 @@
 namespace App\Core;
 
 use App\Post\PostsRepository;
-use App\Comment\CommentsRepository;
+use App\Post\CommentsRepository;
 use App\Post\PostsController;
 
 use PDO;
