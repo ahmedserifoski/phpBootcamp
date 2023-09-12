@@ -26,6 +26,12 @@ class PostsController extends AbstractController {
   //and this is the function that gets a specific post once we've clicked on it
   public function post(){
     $id = $_GET["id"];
+
+    if(isset($_POST["content"])) {
+      $content = $_POST["content"];
+      $this->commentsRepository->insertPostComment($id, $content);
+    }
+
     $post = $this->postsRepository->fetchSpecificPost($id);
     $comments = $this->commentsRepository->fetchAllById($id);
     $this->render("posts/post", [

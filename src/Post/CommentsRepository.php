@@ -13,6 +13,16 @@ class CommentsRepository extends AbstractRepository {
     return "App\\Post\\CommentModel";
   }
 
+  function insertPostComment($postId, $content) {
+    $table = $this->getTableName();
+    $smtp = $this->pdo->prepare("INSERT INTO `$table` (`content`, `post_id`) VALUES (:content, :postId)");
+    $smtp->execute([
+      'content' => $content,
+      'postId' => $postId
+    ]);
+
+  }
+
   function fetchAllById($id) {
 
     $table = $this->getTableName();
@@ -20,9 +30,7 @@ class CommentsRepository extends AbstractRepository {
 
     $smtp = $this->pdo->prepare("SELECT * FROM `{$table}` WHERE post_id = :id");
     $smtp->execute(['id' => $id]);
-    $smtp->setFetchMode(PDO::FETCH_CLASS, "{$model}");
-    $comments = $smtp->fetch(PDO::FETCH_CLASS);
-
+    $comments = $smtp->fetchAll(PDO::FETCH_CLASS, "{$model}");
     return $comments;
   }
 

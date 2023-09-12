@@ -24,6 +24,16 @@ require __DIR__ . "/../layout/header.php";
   </ul>
 </div>
 
+<div class="container mt-5">
+    <form action="post?id=<?php echo $post->id ?>" method="post">
+        <div class="mb-3">
+            <label for="content" class="form-label">Add Comment</label>
+            <textarea class="form-control text-white bg-dark" id="comment" name="content" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Comment</button>
+    </form>
+</div>
+
 <?php
 require __DIR__ . "/../layout/footer.php";
  ?>
