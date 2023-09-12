@@ -18,7 +18,8 @@ require __DIR__ . "/../layout/header.php";
   <ul class="list group">
     <?php foreach ($comments as $comment):?>
       <li class="card-body" >
-          <?php echo $comment->content ?>
+        <?php //just sth against cyber attacks ?>
+          <?php echo htmlentities($comment->content, ENT_QUOTES, 'UTF-8') ?>
       </li>
     <?php endforeach; ?>
   </ul>
