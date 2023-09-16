@@ -3,7 +3,7 @@ namespace App\User;
 
 use App\Core\AbstractModel;
 
-class Model extends AbstractModel {
+class UserModel extends AbstractModel {
 
   public $id;
   public $username;

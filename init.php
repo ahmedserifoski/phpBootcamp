@@ -13,9 +13,5 @@ function e($str) {
 
 $container = new App\Core\Container();
 
-$usersRepository = $container->make("usersRepository");
-var_dump($usersRepository);
-
-die();
 
  ?>
