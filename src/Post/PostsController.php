@@ -21,7 +21,7 @@ class PostsController extends AbstractController {
     $this->render("posts/index", [
       "posts" => $posts
     ]);
-  }
+  } 
 
   //and this is the function that gets a specific post once we've clicked on it
   public function post(){

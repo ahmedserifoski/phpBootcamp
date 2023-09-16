@@ -13,6 +13,10 @@ $routes = [
     "controller" => "postsController",
     "method" => "post"
   ],
+  "/user" => [
+    "controller" => "loginController",
+    "method" => "user"
+  ],
 ];
 
 if($routes[$pathInfo]) {
