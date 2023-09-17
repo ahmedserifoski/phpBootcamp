@@ -5,10 +5,12 @@
 
 namespace App\Core;
 
+use App\Post\PostsController;
+use App\User\LoginController;
+
+use App\User\UsersRepository;
 use App\Post\PostsRepository;
 use App\Post\CommentsRepository;
-use App\Post\PostsController;
-use App\User\UsersRepository;
 
 use PDO;
 use PDOException;
@@ -22,6 +24,11 @@ class Container {
   //recipes array, so we are doing it through the __construct() function
   public function __construct(){
     $this->recipes = [
+      "loginController" => function () {
+        return new LoginController(
+          $this->make("usersRepository")
+        );
+      },
       "postsController" => function () {
         //we are telling here how to make a PostsController and in the PostsController
         //class we defined that it has to get a PostsRepository upon creation

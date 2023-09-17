@@ -10,7 +10,7 @@ class LoginController extends AbstractController{
   }
 
   public function login() {
-    $this->render("user/login", [])
+    $this->render("user/login", []);
   }
 
 }

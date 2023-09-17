@@ -13,9 +13,9 @@ $routes = [
     "controller" => "postsController",
     "method" => "post"
   ],
-  "/user" => [
+  "/login" => [
     "controller" => "loginController",
-    "method" => "user"
+    "method" => "login"
   ],
 ];
 
