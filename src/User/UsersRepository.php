@@ -6,13 +6,14 @@ use PDO;
 
 class UsersRepository extends AbstractRepository {
 
-  function getTableName () {
+  public function getModelName () {
+    return "App\\User\\UserModel";
+  }
+  
+  public function getTableName () {
     return "users";
   }
 
-  function getModelName () {
-    return "App\\User\\UserModel";
-  }
 
   public function findUser($username) {
       $table = $this->getTableName();

@@ -19,7 +19,7 @@ $routes = [
   ],
 ];
 
-if($routes[$pathInfo]) {
+if(isset($routes[$pathInfo])) {
   $route = $routes[$pathInfo];
 
   $controllerName = $route["controller"];
