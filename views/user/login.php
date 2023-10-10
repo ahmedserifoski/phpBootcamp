@@ -18,7 +18,7 @@
                            <label class="form-label">Password</label>
                            <input type="password" class="form-control bg-dark text-light" name="password" required>
                        </div>
-                       <button type="submit" class="btn btn-primary">Login</button>
+                       <button type="submit" value="Log IN" class="btn btn-primary">Login</button>
                    </form>
                </div>
            </div>
