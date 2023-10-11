@@ -1,5 +1,9 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
 
+<?php if(!empty($error)): ?>
+    <p><?php echo $error; ?></p>
+<?php endif; ?>
+
 <div class="container mt-5">
    <div class="row justify-content-center">
        <div class="col-md-6">

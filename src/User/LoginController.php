@@ -10,16 +10,27 @@ class LoginController extends AbstractController{
   }
 
   public function login() {
+    $error = null;
     if(!empty($_POST["username"]) && !empty($_POST["password"])) {
 
       $username = $_POST["username"];
       $password = $_POST["password"];
 
-      var_dump($username);
-      var_dump($password);
+      $user = $this->usersRepository->findUser($username);
+
+      if(!empty($user)) {
+
+      } else {
+        $error = "User does not exist.";
+      }
+
+      // var_dump($username);
+      // var_dump($password);
     }
     // var_dump($_POST);
-    $this->render("user/login", []);
+    $this->render("user/login", [
+      "error" => $error
+    ]);
   }
 
 }
