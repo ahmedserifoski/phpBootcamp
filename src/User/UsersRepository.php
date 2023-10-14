@@ -14,7 +14,6 @@ class UsersRepository extends AbstractRepository {
     return "users";
   }
 
-
   public function findUser($username) {
       $table = $this->getTableName();
       $model = $this->getModelName();
@@ -25,6 +24,6 @@ class UsersRepository extends AbstractRepository {
 
       return $user;
   }
-
+    
 }
  ?>
