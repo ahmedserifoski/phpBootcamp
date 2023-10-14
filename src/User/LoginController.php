@@ -19,7 +19,7 @@ class LoginController extends AbstractController{
       $user = $this->usersRepository->findUser($username);
 
       if(!empty($user)) {
-        if($user->password == $password){
+        if(password_verify($password,$user->password)){
           echo "Login erfolgreich";
           die();
         } else {
