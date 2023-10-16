@@ -5,20 +5,18 @@ use App\Core\AbstractController;
 
 class LoginController extends AbstractController{
 
-  public function __construct(UsersRepository $usersRepository) {
-    $this->usersRepository = $usersRepository;
+  private $loginService;
+  public function __construct(LoginService $loginService) {
+    $this->loginService = $loginService;
   }
 
   public function dashboard() {
-    if(!empty($_SESSION["login"])) {
-      echo "user logged in";
-    } else {
-      header("Location: login");
-    }
+    $this->loginService->check();
+    $this->render("user/dashboard", [])
   }
 
   public function logout() {
-    unset($_SESSION["login"]);
+    $this->loginService->logoutAttempt();
     header("Location: login");
   }
  
@@ -29,25 +27,14 @@ class LoginController extends AbstractController{
       $username = $_POST["username"];
       $password = $_POST["password"];
 
-      $user = $this->usersRepository->findUser($username);
-
-      if(!empty($user)) {
-        if(password_verify($password,$user->password)){
-          $_SESSION["login"] = $user->username; 
-          session_regenerate_id(true);
+      if($this->loginService->loginAttempt($username, $password)) {
           header("Location: dashboard");
           return;
-        } else {
-          $error = "Wrong password";
-        }
       } else {
-        $error = "User does not exist.";
+        $error = "Username or password false";
       }
-
-      // var_dump($username);
-      // var_dump($password);
     }
-    // var_dump($_POST);
+
     $this->render("user/login", [
       "error" => $error
     ]);

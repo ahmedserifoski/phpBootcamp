@@ -12,6 +12,8 @@ use App\User\UsersRepository;
 use App\Post\PostsRepository;
 use App\Post\CommentsRepository;
 
+use App\User\LoginService;
+
 use PDO;
 use PDOException;
 
@@ -26,6 +28,11 @@ class Container {
     $this->recipes = [
       "loginController" => function () {
         return new LoginController(
+          $this->make("loginService")
+        );
+      },
+      "loginService" => function () {
+        return new LoginService(
           $this->make("usersRepository")
         );
       },
