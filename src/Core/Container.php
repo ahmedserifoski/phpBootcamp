@@ -6,6 +6,7 @@
 namespace App\Core;
 
 use App\Post\PostsController;
+use App\Post\PostsAdminController;
 use App\User\LoginController;
 
 use App\User\UsersRepository;
@@ -34,6 +35,11 @@ class Container {
       "loginService" => function () {
         return new LoginService(
           $this->make("usersRepository")
+        );
+      },
+      "postsAdminController" => function () {
+        return new PostsAdminController(
+          $this->make("postsRepository")
         );
       },
       "postsController" => function () {

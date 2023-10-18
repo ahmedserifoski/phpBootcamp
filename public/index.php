@@ -15,6 +15,10 @@ $routes = [
     "controller" => "postsController",
     "method" => "post"
   ],
+  "/post-admin" => [
+    "controller" => "postsAdminController",
+    "method" => "adminIndex"
+  ],
   "/login" => [
     "controller" => "loginController",
     "method" => "login"
