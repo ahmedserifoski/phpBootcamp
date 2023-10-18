@@ -15,9 +15,12 @@ class PostsAdminController extends AbstractController {
         ]);
     }
 
-    public function edit() {
-        $id = $_GET("id");
+    public function editPost() {
+        $id = $_GET["id"];
         $post = $this->postsRepository->fetchSpecificPost($id);
-
+        $this->render("posts/admin/edit", [
+            "post" => $post
+        ]);
     }
+}
 ?>
