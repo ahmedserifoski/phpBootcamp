@@ -18,6 +18,11 @@ class PostsAdminController extends AbstractController {
     public function editPost() {
         $id = $_GET["id"];
         $post = $this->postsRepository->fetchSpecificPost($id);
+
+        if(!empty($_POST["title"]) && !empty($_POST["content"])) {
+            echo("Post Speichern");
+            die();
+        }
         $this->render("posts/admin/edit", [
             "post" => $post
         ]);
