@@ -19,12 +19,17 @@ class PostsAdminController extends AbstractController {
         $id = $_GET["id"];
         $post = $this->postsRepository->fetchSpecificPost($id);
 
+        $postEdited = false;
         if(!empty($_POST["title"]) && !empty($_POST["content"])) {
-            echo("Post Speichern");
-            die();
+            $post->title = $_POST["title"];
+            $post->content = $_POST["content"];
+            $this->postsRepository->update($post);
+            $postEdited = true; 
         }
+
         $this->render("posts/admin/edit", [
-            "post" => $post
+            "post" => $post,
+            "postEdited"=> $postEdited
         ]);
     }
 }

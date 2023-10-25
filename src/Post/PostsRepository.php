@@ -21,5 +21,15 @@ class PostsRepository extends AbstractRepository
   function getModelName() {
     return "App\\Post\\PostModel";
   }
+
+  public function update(PostModel $postModel) {
+    $table = $this->getTableName();
+    $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `title` = :title, `content` = :content WHERE `id` = :id");
+    $stmt->execute([
+      "id"=> $postModel->id,
+      "title"=> $postModel->title,
+      "content"=> $postModel->content
+    ]);
+  }
 }
  ?>
