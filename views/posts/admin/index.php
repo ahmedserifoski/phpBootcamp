@@ -12,7 +12,7 @@
               <li class="list-group-item" >
                 <!-- why href="post?id... ?? -> lesson 94 of PHP Bootcamp, Routing
                 einbauen und warum -->
-                <a class="h4 link-light text-decoration-none" href="post-edit?id=<?php echo e($post->id) ?>">
+                <a class="h4 link-light text-decoration-none" href="admin-post-edit?id=<?php echo e($post->id) ?>">
                   <?php echo e($post->title); ?>
                 </a>
               </li>

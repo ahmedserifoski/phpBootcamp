@@ -15,11 +15,11 @@ $routes = [
     "controller" => "postsController",
     "method" => "post"
   ],
-  "/post-admin" => [
+  "/admin-index" => [
     "controller" => "postsAdminController",
     "method" => "adminIndex"
   ],
-  "/post-edit" => [
+  "/admin-post-edit" => [
     "controller" => "postsAdminController",
     "method" => "editPost"
   ],
