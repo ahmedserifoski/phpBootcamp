@@ -1,14 +1,21 @@
 <?php 
 namespace App\Post;
 use App\Core\AbstractController;
+use App\User\LoginService;
 
 class PostsAdminController extends AbstractController {
     
-    public function __construct(PostsRepository $postsRepository) {
+    public function __construct(
+        PostsRepository $postsRepository,
+        LoginService $loginService
+        ) {
         $this->postsRepository = $postsRepository;
+        $this->loginService = $loginService;
     }
 
     public function adminIndex() {
+        $this->loginService->check();
+
         $allPosts = $this->postsRepository->fetchAll();
         $this->render("posts/admin/index", [
             "allPosts" => $allPosts
@@ -25,7 +32,7 @@ class PostsAdminController extends AbstractController {
             $post->content = $_POST["content"];
             $this->postsRepository->update($post);
             $postEdited = true; 
-        }
+        }   
 
         $this->render("posts/admin/edit", [
             "post" => $post,

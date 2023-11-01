@@ -4,6 +4,9 @@
 
         <!-- Input Field -->
         <div class="form-group mb-3">
+            <strong><?php if($postEdited) { echo "Post edited"; } ?></strong>
+        </div>
+        <div class="form-group mb-3">
             <label for="name">Name:</label>
             <input type="text" value="<?php echo e($post->title); ?>" name="title" class="form-control bg-dark text-light">
         </div>
