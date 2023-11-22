@@ -1,6 +1,6 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
 
-
+<!-- <?php var_dump($posts); ?> -->
 <main>
   <section>
     <div class="card text-white bg-transparent mb-3 border-0">
@@ -21,8 +21,8 @@
     </div>
   </section>
 </main>
-<!--
-<?php
+
+<!-- <?php
 echo "<pre>";
 print_r($_SERVER);
 echo "</pre>";

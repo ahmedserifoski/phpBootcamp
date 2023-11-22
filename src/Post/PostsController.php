@@ -17,7 +17,10 @@ class PostsController extends AbstractController {
   //this function index() is representing the app logic that is needed for the
   //index page where we have all our posts
   public function index(){
+
     $posts = $this->postsRepository->fetchAll();
+    // var_dump($_SERVER);
+
     $this->render("posts/index", [
       "posts" => $posts
     ]);
@@ -31,7 +34,6 @@ class PostsController extends AbstractController {
       $content = $_POST["content"];
       $this->commentsRepository->insertPostComment($id, $content);
     }
-
     $post = $this->postsRepository->fetchSpecificPost($id);
     $comments = $this->commentsRepository->fetchAllById($id);
     $this->render("posts/post", [

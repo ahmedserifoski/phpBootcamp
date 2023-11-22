@@ -2,15 +2,12 @@
 
 <ul>
     <li>
-        <a href="post-admin">
-            Edit Posts
-        </a>
+        <a class="text-light" href="post-admin">Edit Posts</a>
     </li>
     <li>
-        <a href="logout">
-            Logout
-        </a>
+        <a class="text-light" href="logout">Logout</a>
     </li>
 </ul>
+   
 
 <?php include __DIR__ . "/../layout/footer.php"; ?>

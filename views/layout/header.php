@@ -11,11 +11,11 @@
 
 body {
   /* The image used */
-  background-image: url("https://wallpapers.com/images/featured/nfl-players-9mr88n406v3cpmli.jpg");
-  background-color: blue;
+  background-image: url("https://www.pixel4k.com/wp-content/uploads/2020/11/patrick-mahomes-ii-4k_1604343848-2048x1365.jpg.webp");
+  background-color: darkgrey;
   background-blend-mode: multiply;
 
-  text-shadow: 55px 25px 45px rgba(0, 0, 0, 0.5); 
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.9); 
 
   /* Full height */
   height: 100%; 
@@ -26,15 +26,31 @@ body {
   background-size: cover;
 }
 
-.text-shadow {
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 1); /* Adjust the values as needed */
-}
-
 </style>
 
 </head>
-<body class="d-flex flex-column bg-dark text-light min-vh-100 p-3 mb-2" >
-  <header class="ahmed">
-    <h1 class="display-4 text-center">NFL</h1>
-  </header>
+<body class="d-flex flex-column bg-secondary text-light min-vh-100 p-3 mb-2" >
+  <nav class="navbar navbar-expand-lg navbar-light bg-transparent text-light">
+    <a class="navbar-brand h3 text-light" href="index"><h1> NFL Blog</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-light" href="index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="admin-index">Admin</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
