@@ -24,7 +24,7 @@ class LoginController extends AbstractController{
   public function login() {
     $loggedIn = null;
     $error = null;
-    $loginCheck = $this->loginService->check();
+
 
     if(!empty($_POST["username"]) && !empty($_POST["password"])) {
 
@@ -43,7 +43,17 @@ class LoginController extends AbstractController{
     $this->render("user/login", [
       "error" => $error,
       "loggedIn" => $loggedIn,
-      "loginCheck" => $loginCheck
+
+    ]);
+  }
+
+  public function register() {
+
+
+
+    $registered = "Alma is registered user";
+    $this->render("user/register", [
+      "registered" => $registered
     ]);
   }
 

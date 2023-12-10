@@ -8,7 +8,7 @@
     // var_dump($loginCheck);
 ?>
 <div class="container mt-5">
-    <?php if ($loginCheck): ?>
+    <?php if ($error): ?>
         <p class="display-6">It seemes like you're already logged in. So there is no need to do that again 🤪</p>
     <?php else: ?>
         <div class="row justify-content-center">

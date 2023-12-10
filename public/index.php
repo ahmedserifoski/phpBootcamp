@@ -35,6 +35,10 @@ $routes = [
     "controller" => "loginController",
     "method" => "logout"
   ],
+  "/register" => [
+    "controller" => "loginController",
+    "method" => "register"
+  ],
 ];
 
 if(isset($routes[$pathInfo])) {
