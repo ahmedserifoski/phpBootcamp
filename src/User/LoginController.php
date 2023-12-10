@@ -20,14 +20,19 @@ class LoginController extends AbstractController{
     header("Location: login");
   }
  
+    //make this if logged in to dispplay the user name top right corner in the header navigation
   public function login() {
+    $loggedIn = null;
     $error = null;
+    $loginCheck = $this->loginService->check();
+
     if(!empty($_POST["username"]) && !empty($_POST["password"])) {
 
       $username = $_POST["username"];
       $password = $_POST["password"];
 
       if($this->loginService->loginAttempt($username, $password)) {
+          $loggedIn = true;
           header("Location: dashboard");
           return;
       } else {
@@ -36,7 +41,9 @@ class LoginController extends AbstractController{
     }
 
     $this->render("user/login", [
-      "error" => $error
+      "error" => $error,
+      "loggedIn" => $loggedIn,
+      "loginCheck" => $loginCheck
     ]);
   }
 

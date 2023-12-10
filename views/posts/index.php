@@ -4,7 +4,7 @@
 <main>
   <section>
     <div class="card text-white bg-transparent mb-3 border-0">
-        <h2 class="card-header border-0 display-4">Current QB's</h2>
+        <h2 class="card-header border-0 pb-5 display-6">Current QB's</h2>
         <ul class="list group text-shadow">
           <?php foreach($posts as $post):?>
             <strong class="card text-white bg-transparent mb-3 border-0">

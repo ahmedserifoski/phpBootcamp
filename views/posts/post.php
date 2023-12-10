@@ -7,13 +7,12 @@ require __DIR__ . "/../layout/header.php";
 // echo "<hr>";
 ?>
 <div  class="card text-white bg-transparent mb-3 border-0">
-  <h1 class="card-header border-0 display-4"><?php echo e($post["title"]); ?> </h1>
-  <hr class="my-4">
-  <p class="card-body"><?php echo nl2br(e($post["content"])); ?></p>
+  <h2 class="card-header border-0"><?php echo e($post["title"]); ?> </h2>
+  <p class="card-body border-0"><?php echo nl2br(e($post["content"])); ?></p>
 </div>
 
 <div class="card text-white bg-transparent mb-3 border-0">
-  <h3 class="card-header display-6">Comments section:</h3>
+  <h4 class="card-header border-0">Comments section:</h4>
   <ul class="list group">
     <?php foreach ($comments as $comment):?>
       <li class="card-body" >

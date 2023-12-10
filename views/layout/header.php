@@ -31,7 +31,7 @@ body {
 </head>
 <body class="d-flex flex-column bg-secondary text-light min-vh-100 p-3 mb-2" >
   <nav class="navbar navbar-expand-lg navbar-light bg-transparent text-light">
-    <a class="navbar-brand h3 text-light" href="index"><h1> NFL Blog</h1></a>
+    <a class="navbar-brand display-3 text-light" href="index"><h1> NFL Blog</h1></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
