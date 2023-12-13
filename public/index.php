@@ -27,6 +27,10 @@ $routes = [
     "controller" => "loginController",
     "method" => "login"
   ],
+  "/register" => [
+    "controller" => "loginController",
+    "method" => "register"
+  ],
   "/dashboard" => [
     "controller" => "loginController",
     "method" => "dashboard"

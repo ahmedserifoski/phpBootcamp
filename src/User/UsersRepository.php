@@ -24,6 +24,29 @@ class UsersRepository extends AbstractRepository {
 
       return $user;
   }
+
+  public function addUser($username, $password) {
+    $table = $this->getTableName();
+    $model = $this->getModelName();
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $smtp = $this->pdo->prepare("INSERT INTO `$table` (username, password) VALUES (:username, :password)");
+    $smtp->execute([
+      'username' => $username, 
+      'password' => $hashedPassword
+    ]);
+
+    $userId = $this->pdo->lastInsertId();
+
+    // Fetch the user after insertion
+    $smtp = $this->pdo->prepare("SELECT * FROM `$table` WHERE id = :id");
+    $smtp->execute(['id' => $userId]);
+    $smtp->setFetchMode(PDO::FETCH_CLASS, $model);
+    $user = $smtp->fetch(PDO::FETCH_CLASS);
+
+    return $user;
+}
+
     
 }
  ?>
