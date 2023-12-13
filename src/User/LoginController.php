@@ -22,6 +22,8 @@ class LoginController extends AbstractController{
  
   public function login() {
     $error = null;
+    $loggedIn = $this->loginService->check2();
+
     if(!empty($_POST["username"]) && !empty($_POST["password"])) {
 
       $username = $_POST["username"];
@@ -35,8 +37,11 @@ class LoginController extends AbstractController{
       }
     }
 
+    //if stuff don't work return to 22.november commit. or 22 october i don't know
+
     $this->render("user/login", [
-      "error" => $error
+      "error" => $error,
+      "loggedIn" => $loggedIn
     ]);
   }
 
