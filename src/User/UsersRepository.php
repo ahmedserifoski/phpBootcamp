@@ -24,29 +24,27 @@ class UsersRepository extends AbstractRepository {
 
       return $user;
   }
+// UsersRepository.php addUser function
+public function addUser($user) {
+  $table = $this->getTableName();
+  $model = $this->getModelName();
+  $username = $user->username;
+  $password = $user->password;
 
-  public function addUser($username, $password) {
-    $table = $this->getTableName();
-    $model = $this->getModelName();
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    $smtp = $this->pdo->prepare("INSERT INTO `$table` (username, password) VALUES (:username, :password)");
-    $smtp->execute([
+  $smtp = $this->pdo->prepare("INSERT INTO `$table` (username, password) VALUES (:username, :password)");
+  $smtp->execute([
       'username' => $username, 
-      'password' => $hashedPassword
-    ]);
+      'password' => $password  // Saving the hashed password directly
+  ]);
 
-    $userId = $this->pdo->lastInsertId();
+  // Fetch the user after insertion
+  // $userId = $this->pdo->lastInsertId();
+  // $smtp = $this->pdo->prepare("SELECT * FROM `$table` WHERE id = :id");
+  // $smtp->execute(['id' => $userId]);
+  // $smtp->setFetchMode(PDO::FETCH_CLASS, $model);
+  // $user = $smtp->fetch(PDO::FETCH_CLASS);
 
-    // Fetch the user after insertion
-    $smtp = $this->pdo->prepare("SELECT * FROM `$table` WHERE id = :id");
-    $smtp->execute(['id' => $userId]);
-    $smtp->setFetchMode(PDO::FETCH_CLASS, $model);
-    $user = $smtp->fetch(PDO::FETCH_CLASS);
-
-    return $user;
+  // return $user;
 }
-
-    
 }
  ?>

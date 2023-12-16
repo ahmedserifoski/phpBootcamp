@@ -5,6 +5,9 @@
 <?php endif; ?>
 
 <div class="container mt-5">
+    <?php if ($loggedIn): ?>
+        <p style="font-size: 22px;">You are already logged in silly. You can't register right now... 🤪</p>
+    <?php else: ?>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card bg-dark text-light">
@@ -31,6 +34,7 @@
             </div>
         </div>
     </div>
+    <?php endif; ?>
 </div>
 
 <?php include __DIR__ . "/../layout/footer.php"; ?>

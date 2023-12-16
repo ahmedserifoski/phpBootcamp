@@ -21,7 +21,7 @@ class LoginController extends AbstractController{
   }
  
   public function login() {
-    var_dump($_SERVER);
+    // var_dump($_SERVER);
     $error = null;
     $loggedIn = $this->loginService->check2();
 
@@ -47,27 +47,22 @@ class LoginController extends AbstractController{
   }
 
   public function register() {
-    var_dump($_POST);
-
     $error = null;
     $loggedIn = $this->loginService->check2();
 
-    // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(!empty($_POST["username"]) && !empty($_POST["password"])) {
-
-        // Handle form submission
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        // Additional validation if needed
-
         // Attempt to register the user
-        if ($this->loginService->registerUser($username, $password)) {
+        $registrationResult = $this->loginService->registerUser($username, $password);
+
+        if ($registrationResult === true) {
             // Registration successful, you might want to redirect to a success page
             header("Location: dashboard");
             return;
         } else {
-            $error = "Error during registration. Please try again.";
+            $error = $registrationResult; // Assign the error message
         }
     }
 
@@ -75,7 +70,8 @@ class LoginController extends AbstractController{
         "error" => $error,
         "loggedIn" => $loggedIn
     ]);
-  }
+}
+
 }
 
  ?>
