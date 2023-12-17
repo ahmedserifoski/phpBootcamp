@@ -5,8 +5,7 @@
   <section>
     <div class="card text-white bg-transparent mb-3 border-0">
         <h2 class="card-header border-0 display-3 text-center">Admin Area</h2>
-        <p style="font-size: 22px;" class="m-3">This page is so awesome, the moment you become a user you also become an admin 😎</p>
-        <h2 class="mb-3 card-header border-0 display-6">Current QB's</h2>
+        <p style="font-size: 22px;" class="m-3 mb-5">This page is so awesome, the moment you become a user you also become an admin 😎</p>
         <ul class="list group">
           <?php foreach($allPosts as $post):?>
             <strong class="card text-white bg-transparent mb-3 border-0">

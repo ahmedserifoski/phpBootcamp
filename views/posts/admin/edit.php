@@ -1,6 +1,6 @@
 <?php include __DIR__ . "/../../layout/header.php"; ?>
 
-    <form method="post" action="post-edit?id=<?php echo e($post->id); ?>" class="bg-transparent p-3 rounded text-light" >
+    <form method="post" action="admin-post-edit?id=<?php echo e($post->id); ?>" class="bg-transparent p-3 rounded text-light" >
 
         <!-- Input Field -->
         <div class="form-group mb-3">

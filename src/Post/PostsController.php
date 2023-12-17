@@ -46,11 +46,13 @@ class PostsController extends AbstractController {
 
 public function addPost() {
   // Check if the form is submitted
-  if (!empty($_POST["content"] && !empty($_POST["title"]))) {
+  $posts = null;
+  if (!empty($_POST["content"]) && !empty($_POST["title"])) {
+
       // Validate and process the form data
       $title = $_POST['title'];
       $content = $_POST['content'];
-
+      var_dump($title);
       // Additional validation if needed
 
       // Create a new post model
@@ -62,13 +64,13 @@ public function addPost() {
       $this->postsRepository->addNewPost($postModel);
       $posts = $this->postsRepository->fetchAll();
       // Redirect to the post details page or any other page
-      // header("Location: index"); // Change this to the appropriate page
-      // return;
+      header("Location: index"); // Change this to the appropriate page
+      exit;
   }
 
   // Display the form to add a post
   $this->render('posts/index', [
-    "posts" => $posts
+    'posts'=> $posts
   ]);
 }
 
