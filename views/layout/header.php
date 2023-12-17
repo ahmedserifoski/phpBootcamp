@@ -53,6 +53,9 @@ body {
         <li class="nav-item">
           <a class="nav-link text-light" href="admin-index">Admin</a>
         </li>
+        <li class="nav-item">
+          <p class="nav-link text-light" href="admin-index">Hello user</p>
+        </li>
       </ul>
     </div>
   </nav>

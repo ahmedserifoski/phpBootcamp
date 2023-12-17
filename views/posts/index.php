@@ -5,7 +5,7 @@
   <section>
     <div class="card text-white bg-transparent mx-3 mb-3 border-0">
         <!-- <h2 class="mb-3 card-header border-0 display-6">qb's</h2> -->
-        <p class="mb-5" style="font-size: 22px;"> This is a blog where you can write anything you want. A bit dangerous in 2024 but it is what it is. Write sth. about NFL 🙄 🏈</p>
+        <p class="mt-4 mb-5" style="font-size: 22px;"> This is a blog where you can write anything you want. A bit dangerous in 2024 but it is what it is. Write sth. about NFL 🙄 🏈</p>
         <ul class="list group text-shadow">
           <?php foreach($posts as $post):?>
             <strong class="card text-white bg-transparent mb-3 border-0">
