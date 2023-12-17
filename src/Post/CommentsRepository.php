@@ -20,7 +20,6 @@ class CommentsRepository extends AbstractRepository {
       'content' => $content,
       'postId' => $postId
     ]);
-
   }
 
   function fetchAllById($id) {

@@ -34,7 +34,6 @@ abstract class AbstractRepository {
     $smtp = $this->pdo->query("SELECT * FROM `{$table}`");
     $posts = $smtp->fetchAll(PDO::FETCH_CLASS, "{$model}");
     return $posts;
-
   }
 
     //fetch individual post from table posts, there is also some prepare statements

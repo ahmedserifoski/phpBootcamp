@@ -31,5 +31,14 @@ class PostsRepository extends AbstractRepository
       "content"=> $postModel->content
     ]);
   }
+
+  public function addNewPost(PostModel $postModel) {
+    $table = $this->getTableName();
+    $stmt = $this->pdo->prepare("UPDATE `{$table}` SET `title` = :title, `content` = :content");
+    $stmt->execute([
+      "title"=> $postModel->title,
+      "content"=> $postModel->content
+    ]);
+  }
 }
  ?>

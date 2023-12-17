@@ -42,6 +42,37 @@ class PostsController extends AbstractController {
     ]);
   }
 
+  // PostsController.php
+
+public function addPost() {
+  // Check if the form is submitted
+  if (!empty($_POST["content"] && !empty($_POST["title"]))) {
+      // Validate and process the form data
+      $title = $_POST['title'];
+      $content = $_POST['content'];
+
+      // Additional validation if needed
+
+      // Create a new post model
+      $postModel = new PostModel();
+      $postModel->title = $title;
+      $postModel->content = $content;
+
+      // Save the post to the database
+      $this->postsRepository->addNewPost($postModel);
+      $posts = $this->postsRepository->fetchAll();
+      // Redirect to the post details page or any other page
+      // header("Location: index"); // Change this to the appropriate page
+      // return;
+  }
+
+  // Display the form to add a post
+  $this->render('posts/index', [
+    "posts" => $posts
+  ]);
+}
+
+
 }
 
 
