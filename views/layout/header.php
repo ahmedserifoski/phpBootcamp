@@ -1,3 +1,4 @@
+<?php use App\Middleware\AuthMiddleware; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,36 +28,47 @@ body {
 }
 
 </style>
+<?php
+// Apply the middleware
+$authMiddleware = new AuthMiddleware();
+$authMiddleware->handle();
+  // var_dump($authMiddleware->handle());
+  // var_dump($GLOBALS["username"]);
+// ...
 
+?>
 </head>
 <body class="d-flex flex-column bg-secondary text-light min-vh-100 p-3 mb-2" >
-  <nav class="navbar navbar-expand-lg navbar-light bg-transparent text-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent text-light">
     <a class="navbar-brand h3 text-light" href="index"><h1> NFL Blog</h1></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link text-light" href="index">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="register">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="dashboard">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="admin-index">Admin</a>
-        </li>
-        <li class="nav-item">
-          <p class="nav-link text-light" href="admin-index">Hello user</p>
-        </li>
-      </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="admin-index">Admin</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <p class="nav-link text-light">Hello, <?php echo $GLOBALS["username"] ?></p>
+            </li>
+        </ul>
     </div>
-  </nav>
+</nav>
+
 
