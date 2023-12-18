@@ -18,6 +18,7 @@
               </li>
             </strong>
           <?php endforeach; ?>
+          
         </ul>
     </div>
   </section>

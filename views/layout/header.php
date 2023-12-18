@@ -39,6 +39,7 @@ $authMiddleware->handle();
 ?>
 </head>
 <body class="d-flex flex-column bg-secondary text-light min-vh-100 p-3 mb-2" >
+  
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent text-light">
     <a class="navbar-brand h3 text-light" href="index"><h1> NFL Blog</h1></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,11 +65,26 @@ $authMiddleware->handle();
             </li>
         </ul>
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <p class="nav-link text-light">Hello, <?php echo $GLOBALS["username"] ?></p>
+            <li class="nav-item dropdown text-light">
+                <a 
+                  class="nav-link dropdown-toggle text-light" 
+                  href="#" 
+                  id="navbarDropdownMenuLink" 
+                  role="button" 
+                  data-bs-toggle="dropdown" 
+                  aria-expanded="false"
+                  >
+                <?= isset($GLOBALS['username']) ? "Hello, " . $GLOBALS['username'] : "Welcome " ?>
+                </a>
+                <ul class="dropdown-menu text-white bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                  <?php if (isset($GLOBALS['username'])) : ?>
+                  <a class="dropdown-item text-light" href="logout">Logout</a>
+                  <?php else : ?>
+                  <a class="dropdown-item text-light" href="login">Login</a>
+                  <?php endif; ?>
+                </ul>
+
             </li>
         </ul>
     </div>
 </nav>
-
-
