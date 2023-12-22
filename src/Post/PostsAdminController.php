@@ -26,18 +26,25 @@ class PostsAdminController extends AbstractController {
         $id = $_GET["id"];
         $post = $this->postsRepository->fetchSpecificPost($id);
 
-        $postEdited = false;
+        // $postEdited = false;
         if(!empty($_POST["title"]) && !empty($_POST["content"])) {
             $post->title = $_POST["title"];
             $post->content = $_POST["content"];
             $this->postsRepository->update($post);
-            $postEdited = true; 
+            // $postEdited = true; 
+            header('Location: admin-index'); // Replace 'admin-index' with the actual route for the page with all blog posts
+            exit(); // Stop further execution
         }   
+
+       
 
         $this->render("posts/admin/edit", [
             "post" => $post,
-            "postEdited"=> $postEdited
+            // "postEdited"=> $postEdited
         ]);
+
+
+        
     }
 }
 ?>

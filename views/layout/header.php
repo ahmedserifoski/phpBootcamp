@@ -41,14 +41,14 @@ $authMiddleware->handle();
 <body class="d-flex flex-column bg-secondary text-light min-vh-100 p-3 mb-2" >
   
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent text-light">
-    <a class="navbar-brand h3 text-light" href="index"><h1> NFL Blog</h1></a>
+    <a class="navbar-brand text-light d-flex align-items-center" href="index"><img style="width: 100px;" src="https://1000logos.net/wp-content/uploads/2017/05/NFL-logo.png" alt="NFL logo"> <span style="font-size: 30px;" class="aligin-self-center"> Blog</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link text-light" href="index">Home</a>
             </li>
             <li class="nav-item">
