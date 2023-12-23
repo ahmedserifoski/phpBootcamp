@@ -9,7 +9,7 @@
         <ul class="list group text-shadow">
           <?php foreach($posts as $post):?>
             <strong class="card text-white bg-transparent mb-3 border-0">
-              <li class="list-group-item" >
+              <li class="list-group-item" > 
                 <a class="h4 link-light text-decoration-none" href="post?id=<?php echo e($post->id) ?>">
                   <?php echo e($post->title); ?>
                 </a>
