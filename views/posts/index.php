@@ -1,6 +1,20 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
 
-<!-- <?php var_dump($posts); ?> -->
+<!-- <?php phpinfo(); ?> -->
+<pre>
+<?php 
+
+
+// $sth = $_SERVER["REQUEST_URI"];
+// $whatIWant = substr($sth, strpos($sth, ".php") + 5);
+// echo $whatIWant;
+
+var_dump($_SERVER["REQUEST_URI"]);
+
+
+
+?>
+</pre>
 <main>
   <section>
     <div class="card text-white bg-transparent mx-3 mb-3 border-0">

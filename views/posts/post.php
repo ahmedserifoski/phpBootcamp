@@ -8,6 +8,8 @@ require __DIR__ . "/../layout/header.php";
 // echo "<hr>";
 // echo nl2br($post["content"]);
 // echo "<hr>";
+
+var_dump($_SERVER);
 ?>
 <div  class="card text-white bg-transparent mb-3 border-0">
   <h1 class="card-header border-0 display-4"><?php echo e($post["title"]); ?> </h1>

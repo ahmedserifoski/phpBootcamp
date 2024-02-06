@@ -4,42 +4,61 @@ session_start();
 
 require "../init.php";
 
-$pathInfo = $_SERVER["PATH_INFO"];
+
+$sth = $_SERVER["REQUEST_URI"];
+echo $sth;
+$url = $_SERVER["REQUEST_URI"];
+$parsed_url = parse_url($url);
+$path_segments = explode("/", $parsed_url['path']);
+$pathInfo = end($path_segments);
+// echo $pathInfo; // Output: post
+
+$url = $_SERVER["REQUEST_URI"];
+// Parse the URL
+$parsedUrl = parse_url($url);
+
+// Get the path
+$path = $parsedUrl['path'];
+
+// Output the result
+echo $path;
+
+
 
 $routes = [
-  "/index" => [
+  "index" => [
     "controller" => "postsController",
     "method" => "index"
   ],
-  "/post" => [
+  "post" => [
     "controller" => "postsController",
     "method" => "post"
   ],
-  "/admin-index" => [
+  "admin-index" => [
     "controller" => "postsAdminController",
     "method" => "adminIndex"
   ],
-  "/admin-post-edit" => [
+  "admin-post-edit" => [
     "controller" => "postsAdminController",
     "method" => "editPost"
   ],
-  "/login" => [
+  "login" => [
     "controller" => "loginController",
     "method" => "login"
   ],
-  "/addPost" => [
+  "addPost" => [
     "controller" => "postsController",
     "method" => "addPost"
   ],
-  "/register" => [
+  "register" => [
     "controller" => "loginController",
     "method" => "register"
   ],
-  "/dashboard" => [
+  "dashboard" => [
     "controller" => "loginController",
     "method" => "dashboard"
   ],
-  "/logout" => [
+  "logout" => [
     "controller" => "loginController",
     "method" => "logout"
   ],
@@ -54,14 +73,5 @@ if(isset($routes[$pathInfo])) {
   $controller = $container->make($controllerName);
   $controller->$methodName();
 }
-
-//
-// if($pathInfo == "/index") {
-//   $postsController = $container->make("postsController");
-//   $postsController->index();
-// } elseif ($pathInfo == "/post") {
-//   $postsController = $container->make("postsController");
-//   $postsController->post();
-// }
 
  ?>

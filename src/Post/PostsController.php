@@ -17,14 +17,13 @@ class PostsController extends AbstractController {
   //this function index() is representing the app logic that is needed for the
   //index page where we have all our posts
   public function index(){
-
     $posts = $this->postsRepository->fetchAll();
     // var_dump($_SERVER);
 
     $this->render("posts/index", [
       "posts" => $posts
     ]);
-  } 
+  }
 
   //and this is the function that gets a specific post once we've clicked on it
   public function post(){
@@ -52,7 +51,7 @@ public function addPost() {
       // Validate and process the form data
       $title = $_POST['title'];
       $content = $_POST['content'];
-      var_dump($title);
+      // var_dump($title);
       // Additional validation if needed
 
       // Create a new post model
